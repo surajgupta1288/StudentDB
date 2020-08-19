@@ -14,9 +14,11 @@
         android:layout_height="50dp"
         android:hint="Enter the student Name"/>
 
-    <EditText
+    <TextView
         android:id="@+id/et_student_age"
         android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:textSize="20sp"
         android:layout_height="50dp"
         android:hint="Enter the student Age"/>
     <EditText
@@ -54,6 +56,15 @@
         android:layout_marginLeft="100dp"
         android:textSize="15sp"
         android:text="Enter the Student detail"/>
+
+    <Button
+        android:id="@+id/btn_get_student_info"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="100dp"
+        android:textSize="15sp"
+        android:text="Get the Student detail"/>
 
 
 </LinearLayout>

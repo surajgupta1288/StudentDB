@@ -6,17 +6,26 @@ public class Student {
     public String StudentAge;
     public String StudentBlood;
     public String StudentGender;
-    public String StudentRoll;
+    public String StudentRegd;
     public String StudentMobile;
     public String StudentBatch;
 */
+    private int StudentId;
     private String StudentName;
     private String StudentAge;
     private String StudentBlood;
     private String StudentGender;
-    private String StudentRoll;
+    private String StudentRegd;
     private String StudentMobile;
     private String StudentBatch;
+
+    public int getStudentId() {
+        return StudentId;
+    }
+
+    public void setStudentId(int studentId) {
+        StudentId = studentId;
+    }
 
     public String getStudentName() {
         return StudentName;
@@ -50,12 +59,12 @@ public class Student {
         StudentGender = studentGender;
     }
 
-    public String getStudentRoll() {
-        return StudentRoll;
+    public String getStudentRegd() {
+        return StudentRegd;
     }
 
-    public void setStudentRoll(String studentRoll) {
-        StudentRoll = studentRoll;
+    public void setStudentRegd(String studentRegd) {
+        StudentRegd = studentRegd;
     }
 
     public String getStudentMobile() {
