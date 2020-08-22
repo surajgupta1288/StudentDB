@@ -2,6 +2,7 @@ package com.suraj.studentdb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText mStudentBatch;
 
     private DBHelper dbHelper;
+    private int studentId;
+    private boolean isUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,22 @@ public class MainActivity extends AppCompatActivity {
          dbHelper = new DBHelper(MainActivity.this);
 
 
+         Bundle data = getIntent().getExtras();
+         if(data != null){
+             Student student = (Student) data.getSerializable("STUDENT");
+             isUpdate = true;
+             mStudentName.setText(student.getStudentName());
+             mStudentGender.setText(student.getStudentGender());
+             mStudentRegd.setText(student.getStudentRegd());
+             mStudentMobile.setText(student.getStudentMobile());
+             mStudentBatch.setText(student.getStudentBatch());
+
+             studentId = student.getStudentId();
+
+         }
+
         Button btnStudentAction = findViewById(R.id.btn_add_student);
+
 
         btnStudentAction.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,8 +88,16 @@ public class MainActivity extends AppCompatActivity {
                  student.setStudentMobile(StudentMobile);
                  student.setStudentBatch(StudentBatch);
 
-                dbHelper.insertDataToDatabase(dbHelper.getWritableDatabase(),student);
+                 if(isUpdate){
+                     student.setStudentId(studentId);
+                     dbHelper.updateDataFromDatabase(dbHelper.getWritableDatabase(), student);
+                     setResult(Activity.RESULT_OK);
+                     finish();
+                 }
+                 else {
 
+                     dbHelper.insertDataToDatabase(dbHelper.getWritableDatabase(), student);
+                 }
                 mStudentName.setText("");
                 mStudentAge.setText("");
                 mStudentBlood.setText("");

@@ -70,11 +70,11 @@ public class DBHelper  extends SQLiteOpenHelper {
         contentValues.put(COL_STUDENT_MOBILE,student.getStudentMobile());
         contentValues.put(COL_STUDENT_BATCH,student.getStudentBatch());
 
-        db.update(TABLE_NAME,contentValues,"WHERE "+COL_ID+"=" + student.getStudentId(),null);
+        db.update(TABLE_NAME,contentValues,COL_ID+"=" + student.getStudentId(),null);
     }
 
     public void deleteDataFromDatabase(SQLiteDatabase db,Student student){
-        db.delete(TABLE_NAME,"WHERE "+COL_ID+"="+student.getStudentId(),null);
+        db.delete(TABLE_NAME,COL_ID+"="+student.getStudentId(),null);
     }
 
     public ArrayList<Student> getDataFromDatabase(SQLiteDatabase database){
